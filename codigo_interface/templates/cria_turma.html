@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static',filename='style/style_only_form.css') }}">
+{% endblock%}
+
+
+{% block body %}
+
+
+
+    <form action="/cria_turma" method="POST">
+        <label for="disciplinas">Escolha uma disciplina</label>
+        <select name="disciplina" id="disciplinas">
+            {% for disciplina in lista_disciplinas %}
+                <option value="{{ disciplina['cod'] }}">{{ disciplina['nome'] }}</option>
+            {% endfor %}
+        </select>
+        
+        <label for="professores">Escolha um professor</label>
+        <select name="professor" id="professores">
+            {% for professor in lista_professores %}
+                <option value="{{ professor['cod'] }}">{{ professor['nome'] }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="text" name="numero_turma" placeholder="Numero da turma">
+        <input type="text" name="periodo" placeholder="Periodo">
+        <input type="submit" placeholder="Criar">
+    </form>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static',filename='style/style_only_form.css') }}">
+{% endblock%}
+
+
+{% block body %}
+    
+    <form action="/atualiza_avaliacao" method="POST">
+        <textarea name="comentario" cols="30" rows="10">{{ avaliacao['comentario'] }}</textarea>
+        <input name="nota" list="estrelas" placeholder="Nota">
+        <input type="hidden" name="cod_avaliacao" value="{{ avaliacao['cod'] }}">
+        <input type="hidden" name="tipo_avaliacao" value="{{ avaliacao['tipo'] }}">
+        <datalist id="estrelas">
+            <option value="*">
+            <option value="**">
+            <option value="***">
+            <option value="****">
+            <option value="*****">
+        </datalist>
+        <input type="submit" placeholder="Atualizar">
+    </form>
+   
+    
+    
+
+{% endblock %}

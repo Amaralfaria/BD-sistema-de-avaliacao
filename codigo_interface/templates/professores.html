@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='style/style_conheca_melhor.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock%}
+
+
+{% block body %}
+    <main class="resultados">
+        <h1>Professores</h1>
+        <form action="/professores" method="POST">
+            <input type="text" name="busca">
+            <input type="submit" value="Buscar">
+        </form>
+        {% for professor in professores %}
+            <a href="{{ url_for('professor', cod_professor=professor['cod_professor']) }}">
+                <div class="card_resultado">
+                    <h2>{{ professor["nome_professor"] }}</h2>
+                    <p>{{ professor["nome_departamento"] }}</p>
+                    <p>{{ professor["nota"] }}</p>
+                </div>
+            </a>
+        {% endfor %}
+    </main>
+
+    <script src="{{ url_for('static',filename='busca_especifica.js') }}"></script>
+
+{% endblock %}

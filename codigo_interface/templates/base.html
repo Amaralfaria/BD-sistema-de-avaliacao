@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head %}
+    {% endblock%}
+    <link rel="stylesheet" href="{{ url_for('static',filename='style/style_base.css') }}">
+</head>
+<body>
+    <header class="header_menu">
+        <nav class="menu paginas">
+            <ul>
+                <li><a href="{{ url_for('index') }}">Inicio</a></li>
+                <li><a href="{{ url_for('turmas') }}">Turmas</a></li>
+                <li><a href="{{ url_for('professores') }}">Professores</a></li>
+                <li style="display: none;" id="denuncias"><a href="{{ url_for('pg_denuncias') }}">Denuncias</a></li>
+            </ul>
+        </nav>
+
+        <nav class="menu opcoes_perfil">
+            <ul>
+                <li><a href="{{ url_for('perfil') }}">Criar pefil</a></li>
+                <li><a href="{{ url_for('pg_login') }}">Login</a></li>
+                <li id="meu_perfil" style="display: none;"><a href="/meu_perfil/">Meu perfil</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    <script src="{{ url_for('static', filename='logado.js') }}"></script>
+
+    {% block body %}{% endblock %}
+    
+</body>
+</html>

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='style/style_conheca_melhor.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <main class="resultados">
+        <h1>Turmas</h1>
+        <a href="{{ url_for('pg_cria_turma') }}" id="cria_turma"><button>Criar turma</button></a>
+
+        <form action="/turmas" method="POST">
+            <input type="text" name="busca">
+            <input type="submit" value="Buscar">
+        </form>
+
+        {% for turma in lista_turmas %}
+
+            <a href="{{ url_for('turma',cod_turma=turma['cod_turma']) }}">
+                <div class="card_resultado">
+                    <h2>{{ turma["nome_disciplina"] }}</h2>
+                    <p>Professor: {{ turma["nome_prof"] }}</p>
+                    <p>Período: {{ turma["periodo"] }}</p>
+                    <p>Turma: {{ turma["numero_turma"] }}</p>
+                    <p>Departamento: {{ turma["nome_dept"] }}</p>
+                    <a href="{{ url_for('deleta_turma', cod_turma=turma['cod_turma']) }}" class="altera_turma"><button>Deletar turma</button></a>
+                    <a href="{{ url_for('pg_atualiza_turma', cod_turma=turma['cod_turma']) }}" class="altera_turma"><button>Atualizar turma</button></a>
+
+                </div>
+            </a>
+
+        {% endfor %}
+    </main>
+
+    <script src="{{ url_for('static', filename='autorizacao_turma.js') }}"></script>
+
+{% endblock %}

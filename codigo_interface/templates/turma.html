@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='style/style_resultado.css') }}">
+{% endblock%}
+
+
+{% block body %}
+
+
+
+    
+    <div class="wraper_resultado">
+        <div class="card">
+            <h2>{{ turma["nome_disciplina"] }}</h2>
+            <p>Professor: {{ turma["nome_prof"] }}</p>
+            <p>Período: {{ turma["periodo"] }}</p>
+            <p>Turma: {{ turma["numero_turma"] }}</p>
+            <p>Departamento: {{ turma["nome_dept"] }}</p>
+            <p>Nota: {{ turma["nota"] }}</p>
+        </div>
+
+
+        <div class="container_comentario">
+            <h2>Comentarios</h2>
+            
+            <form action="/avalia_turma" method="POST" class="form_avaliacao">
+                <textarea name="comentario" id="comentario" cols="30" rows="10" placeholder="Insira seu comentario"></textarea>
+                <label for="nota">Nota: <input name="nota" list="estrelas" id="nota"></label>
+                <input type="hidden" name="matricula" id="matricula">
+                <input type="hidden" name="cod_turma" value="{{turma['cod_turma']}}">
+                <datalist id="estrelas">
+                    <option value="*">
+                    <option value="**">
+                    <option value="***">
+                    <option value="****">
+                    <option value="*****">
+                </datalist>
+                <input type="submit" placeholder="Publicar">
+            
+            </form>
+
+
+            {% for comentario in comentarios %}
+                <div class="card-comentario">
+                    <h3>{{ comentario["nome_estudante"]}} publicou:</h2>
+                    <p>{{comentario["conteudo"]}}</p>
+                    <p>Nota: {{comentario["nota"]}}</p>
+                    <span style="display: none;" class="matricula_comentario">{{ comentario['matricula'] }}</span>
+        
+                    <a href="{{ url_for('delete_avaliacao',cod_avaliacao=comentario['cod_comentario'],tipo_avaliacao=comentario['tipo_avaliacao'],cod_tp=turma['cod_turma']) }}"        class="btn_usuario_especifico"><button>Deletar</button></a>
+        
+                    <a href="{{ url_for('tela_atualiza_avaliacao', cod_avaliacao=comentario['cod_comentario']) }}" class="btn_usuario_especifico"><button>Atualizar</button></a>
+        
+                    <a href="/denuncia_comentario/{{ comentario['cod_comentario'] }}/" class="denuncia"><button>Denunciar</button></a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="{{ url_for('static',filename='avaliacao_turma.js') }}"></script>
+    <script src="{{ url_for('static',filename='autorizacao_avaliacao.js') }}"></script>
+
+{% endblock %}

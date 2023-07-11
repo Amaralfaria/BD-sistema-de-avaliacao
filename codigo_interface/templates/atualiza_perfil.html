@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static',filename='style/style_only_form.css') }}">
+{% endblock%}
+
+
+{% block body %}
+
+
+
+    <form action="/atualiza_perfil" method="POST">
+        <input type="text" name="nome" placeholder="Nome">
+        <input type="hidden" name="matricula" placeholder="Matrícula" value="{{ matricula }}">
+        <input type="text" name="curso" placeholder="Curso">
+        <input type="text" name="email" placeholder="Email">
+        <input type="password" name="senha" placeholder="Senha">
+        <input type="submit" value="Atualizar perfil">
+    </form>
+
+{% endblock %}

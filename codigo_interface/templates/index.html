@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='style/style_index.css') }}">
+{% endblock%}
+
+
+{% block body %}
+
+    <span id="matricula">{{ matricula }}</span>
+
+    <main class="wraper">
+        <article class="avaliacao">
+            <h1>Conheça melhor seus professores</h1>
+            <p>Veja avaliçoes de professores para uma melhor escolha proximo semestre</p>
+            <button><a href="{{ url_for('professores') }}">Professores</a></button>
+        </article>
+
+        <article class="avaliacao">
+            <h1>Turmas de diferentes semestres</h1>
+            <p>Veja avaliçoes de diversas turmas e tenha uma melhor experiencia com cada materia</p>
+            <button><a href="{{ url_for('turmas') }}">Turmas</a></button>
+        </article>
+
+    </main>
+
+
+{% endblock %}
+

@@ -1,0 +1,33 @@
+.header_menu .menu li{
+    display: inline-block;
+    margin-right: 10px;
+    margin-left: 13px;
+}
+
+.header_menu .menu li, a:link, a:hover, a{
+    text-decoration: none;
+    color: black;
+}
+
+.header_menu{
+    position: fixed;
+    top: 0;
+    background-color: lightskyblue;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_menu .menu ul  {        
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+body{
+    margin: 100px 0;
+}
+
+
+

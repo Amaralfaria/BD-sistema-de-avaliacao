@@ -1,0 +1,29 @@
+.wraper_resultado{
+    width: 80%;
+    margin: auto;
+}
+
+.card{
+    padding: 15px;
+    width: 100%;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.form_avaliacao label, textarea{
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.form_avaliacao{
+    width: 100%;
+    margin: auto;
+}
+
+.container_comentario{
+    padding: 30px;
+    box-sizing: border-box;
+    border: 1px solid rgb(31, 30, 30);
+}
+

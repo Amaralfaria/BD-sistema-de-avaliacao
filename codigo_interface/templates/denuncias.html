@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='style/style_conheca_melhor.css') }}">
+{% endblock%}
+
+
+{% block body %}
+
+    <div class="resultados">
+        <h1>Denuncias</h1>
+        {% for denuncia in lista_denuncias %}
+            <div class="card_resultado">
+                <h2>{{ denuncia['nome'] }} publicou:</h2>
+                <p>{{ denuncia['comentario'] }}</p>
+                <p>Numero de denuncias {{ denuncia['qtd_denuncias'] }}</p>
+                <a href="{{ url_for('delete_avaliacao', cod_avaliacao=denuncia['cod'] , tipo_avaliacao=0,cod_tp=0) }}"><button>Deletar comentario</button></a>
+            </div>
+        {% endfor %}
+    </div>
+
+    
+{% endblock %}

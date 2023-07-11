@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static',filename='style/style_perfil.css') }}">
+
+{% endblock%}
+
+
+{% block body %}
+
+    <div>
+        <h1>{{ estudante["nome"] }}</h1>
+        <p>Curso: {{ estudante["cod_curso"] }}</p>
+        <p>Matrícula: {{ estudante["matricula"] }}</p>
+        <span style="display: none;" id="matricula">{{ estudante["matricula"] }}</span>
+        <p>Email: {{ estudante["email"] }}</p>
+
+        <p>Tipo de conta: {{ estudante["descricao"] }}</p>
+        <span style="display: none;" id="autorizacao">{{ estudante["descricao"] }}</span>
+
+        <img src="{{ foto }}" alt="" id="foto_perfil">
+        <a href="{{ url_for('deleta_perfil', matricula=estudante['matricula']) }}"><button id="btn_deletar">Deletar perfil</button></a>
+    
+        <a href="{{ url_for('pg_atualiza_perfil', matricula=estudante['matricula']) }}"><button>Atualizar perfil</button></a>
+        
+    </div>
+
+
+    <script src="{{ url_for('static', filename='login.js') }}"></script>
+    
+
+{% endblock %}
