@@ -2,9 +2,10 @@ from flask import Flask, render_template, request, Response, redirect, url_for
 import mysql.connector as mc
 import json
 from io import BytesIO
+import base64
 
 bd = mc.connect(
-    database = 'projeto_bd',
+    database = 'bd_reprodutivel',
     user = 'root',
     password = 'Saculoo3'
 )
@@ -38,7 +39,7 @@ def professores():
         where = request.form["busca"]
         query += f"where p.nome LIKE '%{where}%' "
 
-    query += "LIMIT 1,10"
+    # query += "LIMIT 1,10"
     professores = select(query)
 
     return render_template('professores.html', professores=professores)
@@ -149,7 +150,7 @@ def turmas():
         where = request.form["busca"]
         query += f"where nome_disciplina LIKE '%{where}%' "
 
-    query += "LIMIT 1,10"
+    # query += "LIMIT 1,10"
     
     lista_turmas = select(query)
     
@@ -292,6 +293,7 @@ def meu_perfil(matricula):
     estudante = select(query)[0]
     # print(query)
     # foto = estudante["foto_perfil"]
+    # foto = base64.b64encode(foto).decode('utf-8')
     # foto = Response(foto,mimetype='image/jpg')
     
 

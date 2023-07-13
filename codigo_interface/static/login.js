@@ -13,7 +13,4 @@ btn_deletar.onclick = function(){
 
 
 
-const urlCreator = window.URL || window.webkitURL;
-foto_perfil = document.getElementById('foto_perfil');
-data = foto_perfil.src;
-foto_perfil.src = urlCreator.createObjectURL(data);
+
