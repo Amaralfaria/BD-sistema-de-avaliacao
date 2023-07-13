@@ -5,9 +5,9 @@ from io import BytesIO
 import base64
 
 bd = mc.connect(
-    database = 'bd_reprodutivel',
+    database = 'seu_banco',
     user = 'root',
-    password = 'Saculoo3'
+    password = 'senha'
 )
 
 def select(query):
