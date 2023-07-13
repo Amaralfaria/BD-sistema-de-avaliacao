@@ -122,7 +122,9 @@ AS SELECT  distinct a.cod, a.comentario, e.nome, (
     where a.cod = av.cod
     group by av.cod
 ) as qtd_denuncias
-
+FROM avaliacao a
+join denuncia de ON de.cod_avaliacao = a.cod
+join estudante e ON e.matricula = a.matricula_estudante;
 
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `proc_nota_professor`(IN cod_professor INTEGER, OUT nota float)
