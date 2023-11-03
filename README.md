@@ -1,5 +1,4 @@
-# BD-sistema-de-avaliacao
-Trabalho final da disciplina de banco de dados
+# Sistema-de-avaliacao
 Para rodar o projeto:
 1-Crie um schema no seu SGBD mySQL
 2-Rode o arquivo script_reprodutivel.sql no schema criado
